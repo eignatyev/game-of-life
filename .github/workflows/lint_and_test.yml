@@ -1,4 +1,4 @@
-name: build and test
+name: lint and test
 
 on: [push, pull_request]
 
@@ -25,3 +25,7 @@ jobs:
       - name: lint
         run: |
           yarn lint
+
+      - name: test
+        run: |
+          yarn test
