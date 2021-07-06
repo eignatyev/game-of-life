@@ -58,25 +58,11 @@ function determineLifeState(
 }
 
 export function triggerLifeStep(matrix: BinaryMatrix): BinaryMatrix {
-    return matrix.reduce(
-        (
-            newMatrix: BinaryMatrix,
-            binaryArray: BinaryArray,
-            i: number,
-        ): BinaryMatrix => [
-            ...newMatrix,
-            binaryArray.reduce(
-                (
-                    newBinaryArray: BinaryArray,
-                    _binary: Binary,
-                    j: number,
-                ): BinaryArray => [
-                    ...newBinaryArray,
+    return matrix.map(
+        (binaryArray: BinaryArray, i: number): BinaryArray =>
+            binaryArray.map(
+                (_binary: Binary, j: number): Binary =>
                     determineLifeState(matrix, i, j),
-                ],
-                [],
             ),
-        ],
-        [],
     );
 }
