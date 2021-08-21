@@ -4,13 +4,13 @@ export type BinaryMatrix = BinaryArray[];
 
 type Coordinates = [number, number];
 
-function getIndices(matrixSize: number, indices: Coordinates) {
-    return indices.map(
-        (index: number): number => (matrixSize + index) % matrixSize,
+function getCoordinates(matrixSize: number, coordinates: Coordinates) {
+    return coordinates.map(
+        (coordinate: number): number => (matrixSize + coordinate) % matrixSize,
     );
 }
 
-function getAdjacentIndices(coordinates: Coordinates): Coordinates[] {
+function getAdjacentCoordinates(coordinates: Coordinates): Coordinates[] {
     const [i, j] = coordinates;
 
     return [
@@ -27,12 +27,12 @@ function getAdjacentIndices(coordinates: Coordinates): Coordinates[] {
 
 function countAliveNeighbours(
     matrix: BinaryMatrix,
-    coordinates: Coordinates,
+    targetCoordinates: Coordinates,
 ): number {
-    return getAdjacentIndices(coordinates).reduce(
-        (counter: number, indices: Coordinates): number => {
-            const [k, m] = getIndices(matrix.length, indices);
-            return counter + matrix[k][m];
+    return getAdjacentCoordinates(targetCoordinates).reduce(
+        (counter: number, coordinates: Coordinates): number => {
+            const [i, j] = getCoordinates(matrix.length, coordinates);
+            return counter + matrix[i][j];
         },
         0,
     );
