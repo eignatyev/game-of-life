@@ -1,7 +1,7 @@
 import { BinaryMatrix, triggerLifeStep } from '../src';
 
 describe('triggering cellular life step', (): void => {
-    describe('when all cells have 3 neighbours', (): void => {
+    describe('when all cells have 3 neighbors', (): void => {
         test('makes all cells alive', (): void => {
             const cells: BinaryMatrix = [
                 [0, 0, 0],
@@ -21,7 +21,7 @@ describe('triggering cellular life step', (): void => {
         });
     });
 
-    describe('when all cells have less then 2 neighbours', (): void => {
+    describe('when all cells have less then 2 neighbors', (): void => {
         test('makes all cells dead', (): void => {
             const cells: BinaryMatrix = [
                 [0, 0, 0],

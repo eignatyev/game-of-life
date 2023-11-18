@@ -25,7 +25,7 @@ function getAdjacentCoordinates(coordinates: Coordinates): Coordinates[] {
     ];
 }
 
-function countAliveNeighbours(
+function countAliveNeighbors(
     matrix: BinaryMatrix,
     targetCoordinates: Coordinates,
 ): number {
@@ -47,13 +47,13 @@ function determineLifeState(
     matrix: BinaryMatrix,
     coordinates: Coordinates,
 ): Binary {
-    const aliveNeighboursCount = countAliveNeighbours(matrix, coordinates);
+    const aliveNeighborsCount = countAliveNeighbors(matrix, coordinates);
 
     const isAliveAndHealthy =
-        isAlive(matrix, coordinates) && [2, 3].includes(aliveNeighboursCount);
+        isAlive(matrix, coordinates) && [2, 3].includes(aliveNeighborsCount);
 
     const isDeadAndReproduced =
-        !isAlive(matrix, coordinates) && aliveNeighboursCount === 3;
+        !isAlive(matrix, coordinates) && aliveNeighborsCount === 3;
 
     return isAliveAndHealthy || isDeadAndReproduced ? 1 : 0;
 }
